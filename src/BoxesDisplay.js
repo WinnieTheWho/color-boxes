@@ -4,17 +4,19 @@ import Box from "./Box"
 class BoxesDisplay extends Component {
   static defaultProps = {
     colors: ["blue", "red", "orange", "peachpuff",
-            "yellow", "green", "purple", "pink"]
+      "yellow", "green", "purple", "pink"]
   }
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.state = {boxesArray: 
-    ["blue","blue","blue","blue",
-    "blue","blue","blue","blue",
-    "blue","blue","blue","blue",
-    "blue","blue","blue","blue"]}
+    this.state = {
+      boxesArray:
+        ["blue", "blue", "blue", "blue",
+          "blue", "blue", "blue", "blue",
+          "blue", "blue", "blue", "blue",
+          "blue", "blue", "blue", "blue"]
+    }
   }
 
   getRandomIdx() {
@@ -31,12 +33,12 @@ class BoxesDisplay extends Component {
     let randomIdx = this.getRandomIdx();
     let randomColor = this.getRandomColor();
     this.setState(st => ({
-      boxesArray: st.boxesArray.map((box, i, arr) => {
-      if(i === randomIdx) {
-        return arr[i] = randomColor;
-      } else {
-        return arr[i];
-      }
+      boxesArray: st.boxesArray.map((color, i) => {
+        if (i === randomIdx) {
+          return randomColor;
+        } else {
+          return color;
+        }
       })
     }))
   }
@@ -44,15 +46,16 @@ class BoxesDisplay extends Component {
   render() {
     let multiBox = [];
     let colors = this.state.boxesArray
-    for(let i=0; i < colors.length; i++) {
-      multiBox.push(<div>
-        <Box color={colors[i]}/>
-        <button onClick={this.handleClick}>CLICK</button>
-        </div>)
+    //TODO: MAP OVER ARRAY 
+    for (let i = 0; i < colors.length; i++) {
+      multiBox.push(
+        <Box color={colors[i]} />
+      )
     }
     return (
       <div className="boxdisplay">
         {multiBox}
+        <button onClick={this.handleClick}>CLICK</button>
       </div>
     )
   }
