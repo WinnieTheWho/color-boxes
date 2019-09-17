@@ -13,13 +13,15 @@ code {
 }
 
 .boxdisplay {
-  display: flex; 
-  justify-content: space-evenly;
-  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 50px;
 }
 
 .box {
-  height: 100px; 
-  width: 100px;
+  height: 150px; 
+  width: 150px;
   border-radius: 10px;
+  margin: 10px;
 }
